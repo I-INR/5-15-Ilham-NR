@@ -23,13 +23,15 @@ Route::get('/about', function(){
     return view('about', [
         "title" => "About",
         "nama" => "Ilham Nur Ramadhan",
-        "email" => "ok",
-        "gambar" => "apel.jpg"
+        "email" => "3103120111@student.smktelkom-pwt.sch.id",
+        "gambar" => "Foto_Formal_SMK.jpg"
     ]);
 });
-
+use App\Http\Controllers\ContactController;
 Route::get('/gallery', function(){
     return view('gallery', [
         "title" => "Gallery"
     ]);
 });
+
+Route::resource('/contacts', ContactController::class);
