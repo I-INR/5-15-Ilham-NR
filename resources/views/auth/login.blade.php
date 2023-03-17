@@ -17,49 +17,37 @@
 </head>
 
 <body class="animsition">
-    <div class="page-wrapper">
-        <div class="page-content--bge5">
-            <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
-                        <div class="login-logo">
-                            <a href="#">
-                                <img src="{{ asset('admin/images/icon/logo.png')}}" alt="CoolAdmin">
-                            </a>
+    <div class="page-wrapper ">
+        <div class="page-content--bge5 vertical-alignment">
+            <div class="align-middle login-wrap">
+                <div class="login-content ">
+                    <div class="login-logo">
+                            <h1>LOG IN</h1>
                         </div>
-                        <div class="login-form">
-                            <form action="{{route('login')}}" method="post">
-                                @csrf
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
-                                </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">Remember Me
-                                    </label>
-                                    <label>
-                                        <a href="#">Forgotten Password?</a>
-                                    </label>
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                                <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
-                                        <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="register-link">
-                                <p>
-                                    Don't you have account?
-                                    <a href="{{route('register')}}">Register</a>
-                                </p>
+                    <div class="login-form">
+                        <form action="{{ route('login') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input class="au-input au-input--full" type="email" name="email"
+                                    placeholder="Email">
                             </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="au-input au-input--full" type="password" name="password"
+                                    placeholder="Password">
+                            </div>
+
+                            <div class="form-grop pt-4">
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign
+                                    in</button>
+                            </div>
+                        </form>
+                        <div class="register-link">
+                            <p>
+                                Don't you have account?
+                                <a href="{{ route('register') }}">Register</a>
+                            </p>
                         </div>
                     </div>
                 </div>

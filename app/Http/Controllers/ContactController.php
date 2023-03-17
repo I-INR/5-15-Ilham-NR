@@ -14,7 +14,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::paginate(3);
+        $contacts = Contact::paginate(10);
         return view('admin/contacts/index', compact('contacts'));
     }
 
@@ -54,7 +54,7 @@ class ContactController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -98,4 +98,5 @@ class ContactController extends Controller
 
         return redirect()->route('contacts.index');
     }
+    
 }

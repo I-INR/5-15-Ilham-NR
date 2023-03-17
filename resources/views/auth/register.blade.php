@@ -23,46 +23,40 @@
                 <div class="login-wrap">
                     <div class="login-content">
                         <div class="login-logo">
-                            <a href="#">
-                                <img src="{{ asset('admin/images/icon/logo.png')}}" alt="CoolAdmin">
-                            </a>
+                            <h1>Register</h1>
                         </div>
                         <div class="login-form">
-                            <form action="{{route('register')}}" method="post">
+                            <form action="{{ route('register') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Username">
+                                    <input class="au-input au-input--full" type="text" name="name"
+                                        placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <input class="au-input au-input--full" type="email" name="email"
+                                        placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <input class="au-input au-input--full" type="password" name="password"
+                                        placeholder="Password">
                                 </div>
                                 <div class="form-group">
                                     <label>Password Confirmation</label>
-                                    <input class="au-input au-input--full" type="password" name="password_confirmation" placeholder="Password Confirmation">
+                                    <input class="au-input au-input--full" type="password" name="password_confirmation"
+                                        placeholder="Password Confirmation">
                                 </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="aggree">Agree the terms and policy
-                                    </label>
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
-                                <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
-                                        <button class="au-btn au-btn--block au-btn--blue2">register with twitter</button>
-                                    </div>
+                                <div class="form-group pt-4">
+                                    <button class="au-btn au-btn--block au-btn--green m-b-20"
+                                        type="submit">register</button>
                                 </div>
                             </form>
                             <div class="register-link">
                                 <p>
                                     Already have account?
-                                    <a href="{{route('login')}}">Login</a>
+                                    <a href="{{ route('login') }}">Login</a>
                                 </p>
                             </div>
                         </div>

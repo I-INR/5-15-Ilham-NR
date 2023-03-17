@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BookController;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,26 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index', [
-        "title" => "Beranda"
-    ]);
-});
-
-Route::get('/about', function(){
-    return view('about', [
-        "title" => "About",
-        "nama" => "Ilham Nur Ramadhan",
-        "email" => "3103120111@student.smktelkom-pwt.sch.id",
-        "gambar" => "Foto_Formal_SMK.jpg"
-    ]);
-});
-use App\Http\Controllers\ContactController;
-Route::get('/gallery', function(){
-    return view('gallery', [
-        "title" => "Gallery"
-    ]);
-});
+Route::get('/',[BookController::class,'mainpage']);
+Route::get('/book/{id}', [BookController::class, 'show'])->name('book.detail');
 
 Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
 Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
@@ -40,10 +27,18 @@ Route::post('/contacts/store', [ContactController::class, 'store'])->name('conta
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/contacts/index', [ContactController::class, 'index'])->name('contacts.index');
-    Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
-    Route::post('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
-    Route::get('/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
+    Route::get('/admin/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/admin/book/index', [BookController::class, 'index'])->name('book.index');
+    Route::post('/admin/book/add', [BookController::class, 'store'])->name('book.store');
+    Route::get('/exportpdf', [BookController::class, 'exportpdf'])->name('book.exportpdf');
+    Route::get('/admin/book/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
+    Route::post('/admin/book/{id}/update', [BookController::class, 'update'])->name('book.update');
+    Route::get('/admin/book/{id}/destroy', [BookController::class, 'destroy'])->name('book.destroy');
+
+    Route::get('/admin/contacts/index', [ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/admin/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+    Route::post('/admin/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
+    Route::get('/admin/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
 
 });
